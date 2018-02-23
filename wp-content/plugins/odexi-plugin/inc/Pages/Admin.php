@@ -95,7 +95,19 @@ class Admin extends BaseController
 
         );
 
-        $this->settings->setSettings( $args );
+        $testArgs = array(
+            array(
+                'option_group' => 'test_options_group',
+                'option_name' => 'test_textarea',
+                'callback' => array( $this->callbacks, 'testOptionsGroup' )
+            ),
+            array(
+                'option_group' => 'test_options_group',
+                'option_name' => 'test_radiobutton'
+            )
+        );
+
+        $this->settings->setSettings( $args, $testArgs );
     }
 
     public function setSections()
@@ -109,7 +121,16 @@ class Admin extends BaseController
             )
 
         );
-        $this->settings->setSections( $args );
+
+        $testArgs = array(
+            array(
+                'id' => 'test_id',
+                'title' => 'Test Form',
+                'callback' =>array($this->callbacks, 'testAdminSection'),
+                'page' => 'odexi_about'
+            )
+        );
+        $this->settings->setSections( $args, $testArgs );
 }
 
     public function setFields()
@@ -139,7 +160,28 @@ class Admin extends BaseController
             )
 
         );
-        $this->settings->setFields( $args );
+
+        $testArgs = array(
+            array(
+                'id' => 'test_textarea',
+                'title' => 'Text Area',
+                'callback' => array($this->callbacks, 'testTextArea'),
+                'page' => 'odexi_about',
+                'section' => 'test_id',
+                'args' => 'test_textarea',
+                'class' => 'test-class'
+            ),
+            array(
+                'id' => 'test_radiobutton',
+                'title' => 'Radio Button',
+                'callback' => array($this->callbacks, 'testRadioButton'),
+                'page' => 'odexi_about',
+                'section' => 'test_id',
+                'args' => 'test_radiobutton',
+                'class' => 'test-class'
+            )
+        );
+        $this->settings->setFields( $args, $testArgs );
     }
 
 

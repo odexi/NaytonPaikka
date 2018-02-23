@@ -29,7 +29,12 @@
 
         <div id="tab-3" class="tab-pane">
             <h3>About</h3>
-            <input type="button" value="Create a form" onclick="location='admin.php'" />
+            <!--<input type="button" value="Create a form" onclick="location='admin.php'" />
+            -->
+            <?php
+            testForm_thing()
+            ?>
+
         </div>
     </div>
 </div>
@@ -46,7 +51,24 @@
             ?>
         </form>
 
+
+
         <?php
     }
+
+function testForm_thing(){
+    ?>
+    <form method="post" action="options.php">
+        <?php
+        settings_fields( 'test_options_group' );
+        do_settings_sections('odexi_about');
+        //submit_button();
+        ?>
+    </form>
+
+
+
+    <?php
+}
 
 ?>

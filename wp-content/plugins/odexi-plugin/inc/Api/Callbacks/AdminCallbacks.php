@@ -28,8 +28,16 @@ class AdminCallbacks extends BaseController {
         return $input;
     }
 
+    public function testOptionsGroup ( $input ) {
+        return $input;
+    }
+
     public function odexiAdminSection() {
         echo 'Check this beautiful section!';
+    }
+
+    public function testAdminSection() {
+        echo 'This is a proper custom field test!';
     }
 
     public function odexiTextExample() {
@@ -40,6 +48,21 @@ class AdminCallbacks extends BaseController {
     public function odexiFirstName() {
         $value = esc_attr( get_option( 'first_name' ) );
         echo '<input type="text" class="regular-text" name="first_name" value="' . $value . '" placeholder="Write your First Name">';
+    }
+
+    public function testTextArea() {
+        $value = esc_attr( get_option( 'test_textarea' ));
+        echo '<textarea name="test" rows="5" cols="40">' . $value .'</textarea>';
+    }
+
+    public function testRadioButton() {
+        $value = esc_attr( get_option( 'test_radiobutton' ) );
+       echo '<input type="radio" name= ' . $value . '
+<?php if (isset($gender) && $gender=="female") echo "checked";?>
+Female
+<input type="radio" name= ' . $value . '
+<?php if (isset($gender) && $gender=="male") echo "checked";?>
+Male';
     }
 
 }
