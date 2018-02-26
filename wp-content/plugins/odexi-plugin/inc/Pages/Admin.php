@@ -158,6 +158,9 @@ class Admin extends BaseController
                     'class' => 'example-class'
                 )
             )
+            array(
+                'id' => 'test'
+            )
 
         );
 
